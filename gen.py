@@ -114,7 +114,7 @@ def main(viz=False):
 
       # re-size uniformly:
       sz = depth.shape[:2][::-1]
-      img = np.array(img.resize(sz,Image.ANTIALIAS))
+      img = np.array(img.resize(sz,Image.BICUBIC))
       seg = np.array(Image.fromarray(seg).resize(sz,Image.NEAREST))
 
       print (colorize(Color.RED,'%d of %d'%(i,end_idx-1), bold=True))
@@ -141,3 +141,28 @@ if __name__=='__main__':
   parser.add_argument('--viz',action='store_true',dest='viz',default=False,help='flag for turning on visualizations')
   args = parser.parse_args()
   main(args.viz)
+  # db = get_data()
+  # image_group = db["image"]
+  # for member_name in image_group:
+  #   data = image_group[list(db["seg"])[0]]
+  #   image_data = data[:]
+  #   print(type(data))
+  #   print(data)
+  #   print(type(image_data))
+  #   print(image_data)
+    
+  # image = Image.fromarray(image_data)
+  # image.save("image.png")
+  
+  # image_data = db["seg"][list(db["seg"])[0]]
+  # image_array = np.array(image_data)
+  
+  # # 이미지로 변환
+  # try:
+  #     image = Image.fromarray(image_array.astype(np.uint8))
+  #     # 이미지 저장
+  #     image.save("seg.png")
+  # except Exception as e:
+  #     print("Error:", e)
+      
+  # print(db.keys())
